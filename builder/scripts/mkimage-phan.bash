@@ -25,7 +25,7 @@ build() {
 
   # install PHP7 dependencies and build dependencies
   {
-    apk --no-cache add php7 php7-json php7-sqlite3 php7-mbstring git build-base autoconf curl php7-dev php7-openssl php7-phar php7-dom
+    apk --no-cache add coreutils php7 php7-json php7-sqlite3 php7-mbstring git build-base autoconf curl php7-dev php7-openssl php7-phar php7-dom
   } >&2
 
 
