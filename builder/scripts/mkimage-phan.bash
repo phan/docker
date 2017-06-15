@@ -74,6 +74,22 @@ build() {
   tar -z -f rootfs.tar.gz --numeric-owner -C "$rootfs" -c .
   [[ "$STDOUT" ]] && cat rootfs.tar.gz
 
+  # install runkit-object-id for potential support of https://github.com/etsy/phan/pull/729
+  {
+    cd /tmp
+    git clone -b "1.0.6" --single-branch --depth 1 https://github.com/runkit7/runkit_object_id.git
+    cd runkit_object_id
+    phpize7
+    ./configure --with-php-config=php-config7
+    make INSTALL_ROOT="$rootfs" install
+
+    printf "extension=runkit_object_id.so" >> "$rootfs"/etc/php7/php.ini
+  } >&2
+
+
+  tar -z -f rootfs.tar.gz --numeric-owner -C "$rootfs" -c .
+  [[ "$STDOUT" ]] && cat rootfs.tar.gz
+
   return 0
 }
 
