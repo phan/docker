@@ -1,2 +1,3 @@
 /images
 /versions/**/rootfs.tar.gz
+composer.phar

@@ -33,12 +33,6 @@ initial configuration for your project.
 
 All of Phan’s command line flags can be passed to `phan/docker`.
 
-## Configuring Stubs
-
-This aims to be a minimal docker image, and does not include many common extensions.
-
-See https://github.com/phan/phan/wiki/How-To-Use-Stubs#internal-stubs for how to generate stubs from installed extensions and configure phan to use those stubs if the extension is not installed.
-
 ## Example
 
 To create an “analysis.txt” in the current directory for further processing
@@ -60,6 +54,20 @@ phan
 Docker images are built with the `build` script based on the awesome building
 and testing framework put into place by the [`docker-alpine`][docker-alpine]
 contributors. See [BUILD.md][build-docs] for more information.
+
+## Phan reports that classes from a PHP module are missing
+
+### Configuring Stubs
+
+This aims to be a minimal docker image, and does not include many common PHP modules(extensions).
+
+See https://github.com/phan/phan/wiki/How-To-Use-Stubs#internal-stubs for how to generate stubs from installed extensions and configure phan to use those stubs if the extension is not installed.
+
+### Extending phan/docker with extra PHP modules
+
+Installing the PHP modules may give phan better type information than stubs in some cases.
+
+See [`examples/installing_extensions`](https://github.com/phan/docker/tree/master/examples/installing_extensions) for how to do that.
 
 ## License
 
