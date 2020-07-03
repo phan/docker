@@ -12,37 +12,6 @@ set -eo pipefail; [[ "$TRACE" ]] && set -x
 build() {
   declare mirror="$1" rel="$2" ast="$3"
 
-  # configure rootfs
-  local rootfs
-  rootfs="$(mktemp -d "${TMPDIR:-/var/tmp}/docker-phan-rootfs-XXXXXXXXXX")"
-  mkdir -p "$rootfs/etc/apk/"
-
-  # configure apk mirror
-  {
-    echo "$mirror/edge/main"
-    echo "$mirror/edge/community"
-  } | tee "/etc/apk/repositories" "$rootfs/etc/apk/repositories" >&2
-
-  # install PHP7 dependencies and build dependencies
-  {
-    apk --no-cache add php7 php7-json php7-sqlite3 php7-mbstring git build-base autoconf curl php7-dev php7-openssl php7-phar php7-dom php7-pcntl
-  } >&2
-
-
-  # install composer
-  {
-    cd /tmp
-    curl -O https://getcomposer.org/download/1.10.8/composer.phar
-    printf "4c40737f5d5f36d04f8b2df37171c6a1ff520efcadcb8626cc7c30bd4c5178e5  composer.phar" | sha256sum -c
-    mv composer.phar /usr/local/bin
-  } >&2
-
-  # install runtime dependencies into rootfs
-  {
-    apk --no-cache --root "$rootfs" --keys-dir /etc/apk/keys add --initdb php7 php7-json php7-sqlite3 php7-mbstring php7-pcntl php7-dom tini
-    cp /docker-entrypoint.sh "$rootfs"/docker-entrypoint.sh
-  } >&2
-
   # install phan
   mkdir -p "$rootfs/opt/"
   {
@@ -60,6 +29,7 @@ build() {
   } >&2
 
   # install php-ast
+  # TODO: curl a zip from github releases and drop the dependency on git?
   {
     cd /tmp
     git clone -b "v${ast}" --single-branch --depth 1 https://github.com/nikic/php-ast.git
