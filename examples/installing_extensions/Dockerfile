@@ -8,7 +8,7 @@ FROM phanphp/phan:3
 # For example, to install simplexml and redis:
 RUN apk --no-cache add \
     php7-simplexml \
-	php7-pecl-redis
+    php7-pecl-redis
 
 # See builder/scripts/mkimage-phan.bash for an example of how to install extensions that are not available through alpine's repos.
 # Installing gcc, git, etc. would make the resulting image much larger,
