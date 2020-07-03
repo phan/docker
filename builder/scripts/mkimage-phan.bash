@@ -5,7 +5,7 @@
 
 declare REL="${REL:-edge}"
 declare MIRROR="${MIRROR:-http://nl.alpinelinux.org/alpine}"
-declare AST="${AST:-0.1.5}"
+declare AST="${AST:-1.0.6}"
 
 set -eo pipefail; [[ "$TRACE" ]] && set -x
 
@@ -32,8 +32,8 @@ build() {
   # install composer
   {
     cd /tmp
-    curl -O https://getcomposer.org/download/1.5.1/composer.phar
-    printf "2745e7b8cced2e97f84b9e9cb0f9c401702f47cecea5a67f095ac4fa1a44fb80  composer.phar" | sha256sum -c
+    curl -O https://getcomposer.org/download/1.10.8/composer.phar
+    printf "4c40737f5d5f36d04f8b2df37171c6a1ff520efcadcb8626cc7c30bd4c5178e5  composer.phar" | sha256sum -c
     mv composer.phar /usr/local/bin
   } >&2
 
@@ -70,23 +70,6 @@ build() {
 
     printf "extension=ast.so" >> "$rootfs"/etc/php7/php.ini
   } >&2
-
-
-  tar -z -f rootfs.tar.gz --numeric-owner -C "$rootfs" -c .
-  [[ "$STDOUT" ]] && cat rootfs.tar.gz
-
-  # install runkit-object-id for potential support of https://github.com/etsy/phan/pull/729
-  {
-    cd /tmp
-    git clone -b "1.0.6" --single-branch --depth 1 https://github.com/runkit7/runkit_object_id.git
-    cd runkit_object_id
-    phpize7
-    ./configure --with-php-config=php-config7
-    make INSTALL_ROOT="$rootfs" install
-
-    printf "extension=runkit_object_id.so" >> "$rootfs"/etc/php7/php.ini
-  } >&2
-
 
   tar -z -f rootfs.tar.gz --numeric-owner -C "$rootfs" -c .
   [[ "$STDOUT" ]] && cat rootfs.tar.gz

@@ -4,9 +4,11 @@ An installation of PHP7 and [Phan][phan] in a super tiny [Alpine Linux][alpine]
 Docker image. The image is just 17 MB and runs interactively on the files
 outside your container, making it easy to statically analyze PHP code.
 
+[phan/docker](https://github.com/phan/docker) is a fork of [cloudflare/docker-phan](cloudflare-docker-phan)
+
 ## Motivations
 
-Phan requires PHP7 and specific PHP extensions to be installed. PHP7 isn’t
+Phan requires PHP7.2+ and specific PHP extensions to be installed. PHP7.2+ isn’t
 packaged yet for many Linux distributions and users would still need to compile
 and enable the extra PHP extensions.
 
@@ -19,7 +21,7 @@ The easiest way to use `docker-phan` is to create a shell function for “phan�
 that makes makes it nearly transparent that phan is running inside Docker.
 
 ```sh
-phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" cloudflare/phan:latest $@; return $?; }
+phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" phanphp/phan:latest $@; return $?; }
 ```
 
 (You may replace “latest” with a tagged Phan release to use a specific version
@@ -52,7 +54,8 @@ contributors. See [BUILD.md][build-docs] for more information.
 
 [phan]: https://github.com/phan/phan
 [alpine]: http://www.alpinelinux.org/
-[phan-tutorial]: https://github.com/etsy/phan/wiki/Tutorial-for-Analyzing-a-Large-Sloppy-Code-Base
+[phan-tutorial]: https://github.com/phan/phan/wiki/Tutorial-for-Analyzing-a-Large-Sloppy-Code-Base
 [docker-alpine]: https://github.com/gliderlabs/docker-alpine
 [build-docs]: BUILD.md
 [bsd-2-clause]: https://tldrlegal.com/license/bsd-2-clause-license-(freebsd)#summary
+[cloudflare-docker-phan]: https://github.com/cloudflare/docker-phan

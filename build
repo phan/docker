@@ -53,7 +53,7 @@ run_tests() {
 
 new_version() {
   declare version=$1
-  declare ast=${2:-0.1.5}
+  declare ast=${2:-1.0.6}
   declare template_files="${3:-templates/}"
 
   mkdir -p "versions/${version}"
@@ -63,7 +63,7 @@ new_version() {
     )
   done
 
-  sed "s:{{.VERSION}}:${version}:g"<"templates/test/test_cloudflare_phan.bats">"test/test_cloudflare_phan-${version}.bats"
+  sed "s:{{.VERSION}}:${version}:g"<"templates/test/test_phanphp_phan.bats">"test/test_phanphp_phan-${version}.bats"
 }
 
 main() {

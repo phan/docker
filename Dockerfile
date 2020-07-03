@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.12
 
 COPY ./docker-entrypoint.sh /
 ADD ./rootfs.tar.gz /
