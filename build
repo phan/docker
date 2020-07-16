@@ -53,7 +53,7 @@ run_tests() {
 
 new_version() {
   declare version=$1
-  declare ast=${2:-1.0.6}
+  declare ast=${2:-1.0.7}
   declare template_files="${3:-templates/}"
 
   mkdir -p "versions/${version}"
