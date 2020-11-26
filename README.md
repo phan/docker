@@ -28,7 +28,7 @@ phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" phanphp/phan:la
 
 ## Running phan/docker
 > If you’re just getting started with Phan, you should follow Phan’s excellent
-[Tutorial for Analyzing A Large Sloopy Code Base][phan-tutorial] to setup the
+[Tutorial for Analyzing A Large Sloppy Code Base][phan-tutorial] to setup the
 initial configuration for your project.
 
 All of Phan’s command line flags can be passed to `phan/docker`.
