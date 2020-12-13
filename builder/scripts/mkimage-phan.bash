@@ -23,7 +23,7 @@ build() {
     fi
     cd phan
 
-    php7 /usr/local/bin/composer.phar --prefer-dist --no-dev --ignore-platform-reqs --no-interaction install
+    php8 /usr/local/bin/composer.phar --prefer-dist --no-dev --ignore-platform-reqs --no-interaction install
     rm -rf .git
     rm -rf tests vendor/symfony/console/Tests vendor/symfony/debug/Tests
   } >&2
@@ -38,7 +38,7 @@ build() {
     ./configure --with-php-config=php-config7
     make INSTALL_ROOT="$rootfs" install
 
-    printf "extension=ast.so" >> "$rootfs"/etc/php7/php.ini
+    printf "extension=ast.so" >> "$rootfs"/etc/php8/php.ini
   } >&2
 
   tar -z -f rootfs.tar.gz --numeric-owner -C "$rootfs" -c .

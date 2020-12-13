@@ -4,7 +4,7 @@ build() {
   declare build_files="${*:-versions/**/options}"
 
   [[ "$BUILDER_IMAGE" ]] || {
-    BUILDER_IMAGE="phan-builder"
+    BUILDER_IMAGE="phan-builder-php8"
     docker build -t "$BUILDER_IMAGE" builder
   }
 
@@ -53,7 +53,7 @@ run_tests() {
 
 new_version() {
   declare version=$1
-  declare ast=${2:-1.0.7}
+  declare ast=${2:-1.0.10}
   declare template_files="${3:-templates/}"
 
   mkdir -p "versions/${version}"

@@ -1,6 +1,6 @@
 # phan/docker
 
-An installation of PHP7 and [Phan][phan] in a super tiny [Alpine Linux][alpine]
+An installation of PHP8 and [Phan][phan] in a super tiny [Alpine Linux][alpine]
 Docker image. The image is just 30 MB and runs interactively on the files
 outside your container, making it easy to statically analyze PHP code.
 
