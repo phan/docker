@@ -28,19 +28,6 @@ build() {
     rm -rf tests vendor/symfony/console/Tests vendor/symfony/debug/Tests
   } >&2
 
-  # install php-ast
-  # TODO: curl a zip from github releases and drop the dependency on git?
-  {
-    cd /tmp
-    git clone -b "v${ast}" --single-branch --depth 1 https://github.com/nikic/php-ast.git
-    cd php-ast
-    phpize7
-    ./configure --with-php-config=php-config7
-    make INSTALL_ROOT="$rootfs" install
-
-    printf "extension=ast.so" >> "$rootfs"/etc/php8/php.ini
-  } >&2
-
   tar -z -f rootfs.tar.gz --numeric-owner -C "$rootfs" -c .
   [[ "$STDOUT" ]] && cat rootfs.tar.gz
 

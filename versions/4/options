@@ -1,5 +1,5 @@
-export RELEASE="4.0.0-RC1"
+export RELEASE="4.0.0"
 export MIRROR="http://mirror.sfo12.us.leaseweb.net/alpine"
 export AST="1.0.10"
 export BUILD_OPTIONS=(-s -r $RELEASE -m $MIRROR -a $AST)
-export TAGS=(phanphp/phan:4.0.0-RC1)
+export TAGS=(phanphp/phan:4.0.0-php8 phanphp/phan:4.0.0 phanphp/phan:4.0 phanphp/phan:4)

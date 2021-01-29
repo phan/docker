@@ -54,7 +54,7 @@ run_tests() {
 new_version() {
   declare version=$1
   declare ast=${2:-1.0.10}
-  declare template_files="${3:-templates/}"
+  declare template_files="${4:-templates/}"
 
   mkdir -p "versions/${version}"
   for file in $template_files/versions/*; do
