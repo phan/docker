@@ -8,9 +8,8 @@ outside your container, making it easy to statically analyze PHP code.
 
 ## Motivations
 
-Phan requires PHP7.2+ and specific PHP extensions to be installed. PHP7.2+ isn’t
-packaged yet for many Linux distributions and users would still need to compile
-and enable the extra PHP extensions.
+Phan requires PHP7.2+ and specific PHP extensions to be installed.
+These docker images use either php 8 or php 7.
 
 By packaging Phan inside a Docker image, we can separate the runtime and
 configuration of the tool from your application’s environment and requirements.
