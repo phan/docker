@@ -1,7 +1,7 @@
 # phan/docker
 
 An installation of PHP8 and [Phan][phan] in a super tiny [Alpine Linux][alpine]
-Docker image. The image is just 30 MB and runs interactively on the files
+Docker image. The image is just 33 MB and runs interactively on the files
 outside your container, making it easy to statically analyze PHP code.
 
 [phan/docker](https://github.com/phan/docker) is a fork of [cloudflare/docker-phan](cloudflare-docker-phan)
@@ -23,7 +23,7 @@ that makes makes it nearly transparent that phan is running inside Docker.
 phan() { docker run -v $PWD:/mnt/src --rm -u "$(id -u):$(id -g)" phanphp/phan:latest $@; return $?; }
 ```
 
-(You may replace “latest” with a tagged Phan release such as `3` or `3.0` or `3.0.4` to use a specific version of Phan.)
+(You may replace “latest” with a tagged Phan release such as `5` or `5.2` or `5.2.1` to use a specific version of Phan.)
 
 ## Running phan/docker
 > If you’re just getting started with Phan, you should follow Phan’s excellent

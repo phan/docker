@@ -5,7 +5,7 @@
 
 declare REL="${REL:-edge}"
 declare MIRROR="${MIRROR:-http://nl.alpinelinux.org/alpine}"
-declare AST="${AST:-1.0.7}"
+declare AST="${AST:-1.1.0}"
 
 set -eo pipefail; [[ "$TRACE" ]] && set -x
 
