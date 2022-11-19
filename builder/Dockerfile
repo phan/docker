@@ -11,8 +11,8 @@ RUN mkdir -p $rootfs/etc/apk && { echo "$mirror/v3.16/main"; echo "$mirror/v3.16
 # install PHP8 dependencies and build dependencies
 RUN apk --no-cache add php php-sqlite3 php-mbstring curl php-openssl php-phar php-dom php-pcntl php-tokenizer php-iconv
 RUN cd /tmp && \
-    curl -O https://getcomposer.org/download/2.0.4/composer.phar && \
-    printf "c3b2bc477429c923c69f7f9b137e06b2a93c6a1e192d40ffad1741ee5d54760d  composer.phar" | sha256sum -c && \
+    curl -O https://getcomposer.org/download/2.4.4/composer.phar && \
+    printf "c252c2a2219956f88089ffc242b42c8cb9300a368fd3890d63940e4fc9652345  composer.phar" | sha256sum -c && \
     mv composer.phar /usr/local/bin
 
 # Use the ast versions provided by alpine
